@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <form id="form">
+            <h3>Student Name</h3>
+          <input type="text"placeholder="Student Name" id="name" value="">
+            
+          <h3>Student Number</h3>
+          <input type="text"placeholder="student Number" id="number"value="">
+       
+            <h3>city</h3>
+          <input type="text"placeholder="city"id="city"value="" >
+
+           <input type="submit"placeholder="Submit"id="submit">
+        </form>
+    </div>
+</body>
+</html>
+<script>
+    document.querySelector("#form").addEventListener("submit",formSubmit);
+      var studentDataArray = JSON.parse(localStorage.getItem("studentitem")) || []
+
+    function formSubmit(event) {
+        event.preventDefault();
+        var name = document.querySelector("#name").value;
+
+        var number = document.querySelector("#number").value;
+
+        var city = document.querySelector("#city").value;
+
+        function studentData(){
+            this.name = name ;
+            this.number = number ;
+            this.city = city ;
+
+        }
+        let data = new studentData()
+        console.log(data)
+
+        studentDataArray.push(data);
+
+        localStorage.setItem("studentitem",JSON.stringify(studentDataArray))
+
+        location.href="management2.html"
+    }
+</script>

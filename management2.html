@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <table border="1">
+         <thead>
+             <tr>
+               <th>Student Name</th>
+               <th>Student Number</th>
+               <th>City</th>
+             </tr>
+         </thead>
+         <tbody id="tbody">
+           
+         </tbody>
+
+     </table>
+</body>
+</html>
+<script>
+    var studentDataArray = JSON.parse(localStorage.getItem("studentitem"))
+      
+      studentDataArray.map(function(element) {
+          var tr = document.createElement("tr")
+
+          var name = document.createElement("td")
+          name.innerText = element.name
+
+          var number = document.createElement("td")
+          number.innerText = element.number
+
+          var city = document.createElement("td")
+          city.innerText = element.city
+
+          tr.append(name,number,city)
+
+          document.querySelector("#tbody").append(tr)
+      })
+</script>
